@@ -1,5 +1,6 @@
 package com.arun.ecommerce.controller;
 
+import com.arun.ecommerce.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +36,11 @@ public class CartController {
 
         cartService.removeCartItem(cartItemId);
 
+    }
+
+    @PostMapping("/checkout")
+    public Order checkout(@RequestParam Long userId,
+                          @RequestParam Long cartId){
+        return cartService.checkout(userId, cartId);
     }
 }
